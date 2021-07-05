@@ -33,5 +33,21 @@
 
     var_dump($int1,$int2,$int3,$int4,$int5,$int6);
     ?></p>
+
+<h2>Les variables de type numérique à virgules flottantes (float, double, decimal)</h2>
+    <p>Ce type de variable ne peut contenir que du numérique avec ou sans décimales</p>
+    <p>Elles peuvent être positives ou négatives</p>
+    <p>on peut utiliser le transtypage pour modifier ces variables (settype ou (float),(double))</p>
+    <p><?php
+    $float1 = 64.124;
+    $float2 = -27.0;
+    $float3 = 0.0;
+    $float4 = (float) "5";
+    $float5 = (float) 4.9;
+    $float6 = (float) "55baobabs et 24";
+
+    var_dump($float1,$float2,$float3,$float4,$float5,$float6);
+    ?></p>
+
 </body>
 </html>
