@@ -10,7 +10,18 @@ $heure = date("H:i:s");
 ?>
 </head>
 <body>
+<?php
+/*
+Commentaires sur
+plusieures lignes
 
+echo est désormais une structure de langage, on utilise donc plus les ()
+*/
+
+echo "<h1>ouvertures balises PHP | $heure</h1>"; // interprétation des variables entre ""
+echo '<p>ouvertures balises PHP | $heure</p>'; // non interprétation des variables entre ''
+
+?>
     <hr>
 </body>
 </html>
