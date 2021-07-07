@@ -7,11 +7,27 @@
     <title>Les types de variables</title>
 </head>
 <body>
+<h2>Ecriture des variables</h2>
+<p>Règles de nommages des variables : <a href="https://www.php.net/manual/fr/language.variables.basics.php" target="_blank">En PHP, les variables sont représentées par un signe dollar "$" suivi du nom de la variable. Le nom est sensible à la casse.</a><br>
+Il existe des règles de nommage qui consistent principalement par: <br>
+- Le nom d'une variable peut faire comprendre ce qu'elle fait, ça évite de rajouter trop de commentaire<br>
+- Il existe plusieures type d'écriture, voici une image les représentant<br><img src="img/case.png" alt="case"></p>
+<?php
+// camel case - variables et propriétés, fonctions et méthodes
+$uneVariableImportante;
+// upper camelcase (Pascal case) - classes
+$UneVariableImportante;
+// upper cobra case : les constantes
+define("UNE_CONSTANTE_IMPORTANTE","nada");
+// le @ cache une erreur, mais à éviter car on peut oublier de fixer le problème
+@var_dump($uneVariableImportante,$UneVariableImportante,UNE_CONSTANTE_IMPORTANTE);
+?>
     <h1>Les types de variables</h1>
     <h2>Les variables de type booléen</h2>
     <p>Ce type de variable ne peut contenir que 2 valeurs: true ou false</p>
     <p>Elles sont la base de tout traitement informatique, on les représentes parfois (mais à tord) par 1 (true) et 0 (false)</p>
     <p><?php
+
     $bool1 = true;
     $bool2 = false;
     
@@ -30,8 +46,9 @@
     $int4 = (int) "5";
     $int5 = (int) 4.9;
     $int6 = (int) "55baobabs et 24";
+    $int7 = (int) "blabla";
 
-    var_dump($int1,$int2,$int3,$int4,$int5,$int6);
+    var_dump($int1,$int2,$int3,$int4,$int5,$int6,$int7);
     ?></p>
 
 <h2>Les variables de type numérique à virgules flottantes (float, double, decimal)</h2>
