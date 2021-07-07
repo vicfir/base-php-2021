@@ -19,6 +19,8 @@
                     "Christian",
                     "Daniel",
                     "Jérémy",
+                    "Jessica",
+                    "Manuel",
                 );
     // bcp de renseignements            
     var_dump($eleves);
@@ -28,8 +30,44 @@
     print_r($eleves);
     echo "</pre>";
 
+    // pour afficher une valeur du tableau, on utilise sa clef
+    echo "<p>4eme entrée : $eleves[3]</p>";
+    echo "<p>1er entrée : $eleves[0]</p>";
+                ?>
+    <p>On peut utiliser [] à la place de array(), les tableaux peuvent être multidimensionnels, on peut avoir autant de tableau dans des tableaux que l'on en a besoin</p>
+                <?php
+    // raccourci avec [] à la place de array(), les tableaux peuvent être multidimensionnels, on peut avoir autant de tableau dans des tableaux que l'on en a besoin
+    $eleves2 = ["Aurélie",
+                "Bilel",
+                "Cahit",
+                "Christian",
+                "Daniel",
+                "Jérémy",
+                [   "un",
+                    "deux",
+                    "trois",
+                ],
+            ];
+
+    // le print_r permet une meilleure lisibilité
+    echo "<pre>";
+    print_r($eleves2);
+    echo "</pre>";
+
+    // pour afficher un tableau dans un tableau
+    echo '<p>7eme entrée valeur 1 du sous tableau : $eleves2[6][0] => '.$eleves2[6][0]."</p>";
+
+    ?>
+    <p>On utilise la clef pour afficher la valeur recherchée, ou plusieures clefs séparées par []</p>
+    <h3>Pour compter le nombre d'élément d'un tableau: count()</h3>
+    <?php
+    $nbEleves = count($eleves);
+    echo "<p>Il y a $nbEleves éléments dans le tableau ".'$eleves</p>';
     
-    
+    // on pourrait utiliser le foreach qui sert à faire des boucles sur les tableaux, on va utiliser le for déjà vu en js
+    for($i=0;$i<$nbEleves;$i++){
+        echo "<p>$eleves[$i]</p>";
+    }
     ?>
 </body>
 </html>
