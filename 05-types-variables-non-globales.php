@@ -18,7 +18,8 @@ $uneVariableImportante;
 // upper camelcase (Pascal case) - classes
 $UneVariableImportante;
 // upper cobra case : les constantes
-define("UNE_CONSTANTE_IMPORTANTE","nada");
+define("UNE_CONSTANTE_IMPORTANTE","nadia");
+
 // le @ cache une erreur, mais à éviter car on peut oublier de fixer le problème
 @var_dump($uneVariableImportante,$UneVariableImportante,UNE_CONSTANTE_IMPORTANTE);
 ?>
@@ -46,7 +47,7 @@ define("UNE_CONSTANTE_IMPORTANTE","nada");
     $int4 = (int) "5";
     $int5 = (int) 4.9;
     $int6 = (int) "55baobabs et 24";
-    $int7 = (int) "blabla";
+    $int7 = (int) "blabla"; // devient 0 car non convertible
 
     var_dump($int1,$int2,$int3,$int4,$int5,$int6,$int7);
     ?></p>
@@ -66,5 +67,23 @@ define("UNE_CONSTANTE_IMPORTANTE","nada");
     var_dump($float1,$float2,$float3,$float4,$float5,$float6);
     ?></p>
 
+<h2>Les variables de type string (string, str)</h2>
+    <p>Ce type de variable contient des chaînes de caractères</p>
+    <p>on peut utiliser le transtypage pour modifier ces variables (settype ou (string))</p>
+    <p><?php
+    $str1 = "Une chaîne de caractère";
+    $str2 = "";
+    $str3 = "123";
+    $str4 = "$str1 ?";
+    $str5 = '$str3 --';
+    $str6 = $str1   .
+            "<br>"  .
+            "coucou";
+    $str7 = (string) 52.23;
+    echo $str6;
+
+    var_dump($str1,$str2,$str3,$str4,$str5,$str6,$str7);
+    ?>
+    </p>
 </body>
 </html>
