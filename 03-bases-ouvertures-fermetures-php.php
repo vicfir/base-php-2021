@@ -27,6 +27,7 @@ echo "<p>ouvertures balises PHP | ",$heure,'</p>';
 ?>
     <hr>
     <h2><?=$heure// echo en abrégé, utilisé dans le PHP en tant que template?></h2>
+    <h2><?php echo $heure// echo en abrégé, utilisé dans le PHP en tant que template?></h2>
 
     
 </body>
