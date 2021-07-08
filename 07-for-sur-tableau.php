@@ -10,3 +10,16 @@ $countPays = count($tabPays);
 
 // on va afficher le nombre de pays
 echo "<h1>Il y a $countPays pays dans notre liste</h1>";
+
+// on va utiliser la boucle for pour afficher chaque pays
+for($i=0; $i<$countPays; $i++){
+
+    // Pour afficher le résultat d'une addition on va utiliser la règle PEMDAS ( https://math-coaching.com/fiche/determiner-ordre-priorite-operations-PEMDAS-47 ), donc exécution des parenthèses AVANT l'affichage de l'echo. La conversion de numérique ( $i+1 = int) vers la chaîne de caractère est automatiquement faite en PHP avec le signe de concaténation (. ou ,). On utilise $i comme clef (ou index) du tableau $tabPays avec les [] pour récupérer la valeur
+    echo ($i+1).") $tabPays[$i]<br>";
+}
+// vérification de la première et dernière clef supposées existantes
+echo "<br>$tabPays[0] - $tabPays[229]";
+// quand on dit que PHP est tableau
+$string = "bonjour les amis";
+// variable qui contient le nombre de caractères
+$nbString = strlen($string);
