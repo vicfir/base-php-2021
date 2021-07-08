@@ -19,7 +19,16 @@ for($i=0; $i<$countPays; $i++){
 }
 // vérification de la première et dernière clef supposées existantes
 echo "<br>$tabPays[0] - $tabPays[229]";
-// quand on dit que PHP est tableau
+// quand on dit que PHP est tableau, une chaîne de caractère est également divisible en tableau
 $string = "bonjour les amis";
+
+// pour afficher le b et le j de $string
+echo "<p>$string[0] $string[3]</p>";
+
 // variable qui contient le nombre de caractères
 $nbString = strlen($string);
+
+// faire une boucle for affichant "bonjour les amis" à la verticale
+for($i=0; $i<$nbString; $i++){
+    echo "<br>".$string[$i];
+} 
