@@ -66,7 +66,7 @@
     echo "<p>Il y a $nbEleves éléments dans le tableau ".'$eleves</p>';
     
     // on pourrait utiliser le foreach qui sert à faire des boucles sur les tableaux, on va utiliser le for déjà vu en js
-    for($i=1;$i<$nbEleves;$i++){
+    for($i=0;$i<$nbEleves;$i++){
         echo "<p>$eleves[$i]</p>";
     }
     ?>
