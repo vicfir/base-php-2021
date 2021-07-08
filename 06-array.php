@@ -4,10 +4,10 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Array - Les tableaux</title>
+    <title>Array - Les tableaux indexés</title>
 </head>
 <body>
-    <h1>Array - Les tableaux</h1>
+    <h1>Array - Les tableaux indexés</h1>
     <p>Le tableau est une variable permettant de contenir plusieures valeurs et sur plusieures niveaux</p>
     <h2>Les tableaux indexés</h2>
     <p>Un tableau est créé avec la fonction array(), Il permet de stocker de multiples valeurs.<br> Les clef sont automatiquement attribuées et sont des int qui commencent à 0 !</p>
@@ -85,6 +85,32 @@
     ];
     var_dump($arrayType);
     ?></p>
-    
+    <h3>Un tableau n'est plus considéré comme indexé, dès que l'on modifie les clefs, même si on les laisse en numérique</h3>
+    <p><?php
+    $arrayType2 = [
+       3=> true,
+        false,
+        54,
+        63.24,
+        "5",
+        "coucou",
+        NULL,
+        [1,2,3],
+    ];
+    var_dump($arrayType2);
+    ?>
+    <p><?php
+    $arrayType3 = [
+       3=> true,
+        false,
+        10 => 54,
+        63.24,
+        "5",
+        -7 => "coucou",
+        NULL,
+        ["lulu"=>1,2,3],
+    ];
+    var_dump($arrayType3);
+    ?>
 </body>
 </html>
