@@ -70,5 +70,21 @@
         echo "<p>$eleves[$i]</p>";
     }
     ?>
+    <h3>Les clefs sont des int dans les tableaux indexés</h3>
+    <p>Les valeurs peuvent être de n'importe quel type</p>
+    <p><?php
+    $arrayType = [
+        true,
+        false,
+        54,
+        63.24,
+        "5",
+        "coucou",
+        NULL,
+        [1,2,3],
+    ];
+    var_dump($arrayType);
+    ?></p>
+    
 </body>
 </html>
