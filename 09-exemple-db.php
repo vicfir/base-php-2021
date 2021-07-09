@@ -1,8 +1,6 @@
 <?php
 // $_POST existe par défaut en tant que tableau, lorsqu'on récupère un formulaire, il devient un tableau associatif contenant les valeurs
 // var_dump($_POST);
-
-
 // connexion à la DB
 $connexionDB = mysqli_connect("localhost", "root", "", "exe9", 3307);
 
@@ -10,17 +8,16 @@ $connexionDB = mysqli_connect("localhost", "root", "", "exe9", 3307);
 mysqli_set_charset($connexionDB, "utf8");
 
 // si le formulaire est envoyé
-if(!empty($_POST)){ // non vide
+if (!empty($_POST)) { // non vide
     // sécurité minimale des variables post vers la locale
-    $thetext = htmlspecialchars(strip_tags(trim($_POST['thetext'])),ENT_QUOTES);
-    $thename = htmlspecialchars(strip_tags(trim($_POST['thename'])),ENT_QUOTES);
-    
+    $thetext = htmlspecialchars(strip_tags(trim($_POST['thetext'])), ENT_QUOTES);
+    $thename = htmlspecialchars(strip_tags(trim($_POST['thename'])), ENT_QUOTES);
+
     // si les variables ne sont pas vides
-    if(!empty($thename)&&!empty($thetext)){
+    if (!empty($thename) && !empty($thetext)) {
         // insertion dans la DB
         mysqli_query($connexionDB, "INSERT INTO goldenbook (thename,thetext) 
                                     values ('$thename','$thetext')");
-        
     }
 }
 
@@ -46,17 +43,17 @@ $datasComment = mysqli_fetch_all($recupComments, MYSQLI_ASSOC);
             <textarea name="thetext" placeholder="Votre texte" required></textarea><br> 
             <input type='submit' value='Envoyer'/><br>
         </form>
-        <h3>Nous avons <?=$nbComment?> commentaires</h3>
-        <?php
-        // var_dump($datasComment);
-        foreach($datasComment as $item):
-        ?>
-        <h4><?=$item['thename']?></h4>
-        <p><?=$item['thetext']?></p>
-        <p>Le <?=$item['thedate']?></p><hr>
-        <?php
-        endforeach;
-        ?>
+        <h3>Nous avons <?= $nbComment ?> commentaires</h3>
+<?php
+// var_dump($datasComment);
+foreach ($datasComment as $item):
+    ?>
+            <h4><?= $item['thename'] ?></h4>
+            <p><?= $item['thetext'] ?></p>
+            <p>Le <?= $item['thedate'] ?></p><hr>
+    <?php
+endforeach;
+?>
     </body>
 </html>
 
