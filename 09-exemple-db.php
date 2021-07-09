@@ -1,3 +1,7 @@
+<?php
+// $_POST existe par défaut en tant que tableau, lorsqu'on récupère un formulaire, il devient un tableau associatif contenant les valeurs
+var_dump($_POST);
+?>
 <html>
     <head>
         <title>Livre d'or sur une page</title>
