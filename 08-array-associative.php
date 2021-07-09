@@ -73,6 +73,7 @@
     echo "<p>".$multiLevel["Users"]["Mikhawa"]["Name"]."</p>";
     
     ?>
+    <h3>Exemple de json, format populaire pour l'échange de données entre sites et langages différents</h3>
     <pre><?php echo $json = json_encode($multiLevel) ?></pre>
     <pre><?php var_dump(json_decode($json)) ?></pre>
 </body>
