@@ -1,6 +1,6 @@
 <?php
 // $_POST existe par défaut en tant que tableau, lorsqu'on récupère un formulaire, il devient un tableau associatif contenant les valeurs
-var_dump($_POST);
+// var_dump($_POST);
 ?>
 <html>
     <head>
@@ -13,6 +13,10 @@ var_dump($_POST);
             <textarea name="thetext" placeholder="Votre texte" required></textarea><br> 
             <input type='submit' value='Envoyer'/><br>
         </form>
+        <h3>Nous avons x commentaires</h3>
+        <h4>Le nom</h4>
+        <p>écrit</p>
+        <p>Le ...date</p><hr>
     </body>
 </html>
 
