@@ -39,7 +39,11 @@
     if($nb1>0 || $nb2>0){
         echo '<p>au moins 1 des 2 (ou les deux) $nb1 ('.$nb1.') ou $nb2 ('.$nb2.') sont strictement positifs</p>';
     }
+    echo "<h4>OU exclusif (ou bien) - XOR - ^</h4>";
 
+    if($nb1>0 ^ $nb2>0){
+        echo '<p>Ne s\'affiche que si 1 seul des numériques est positif (ou exclusif): $nb1 ('.$nb1.') - $nb2 ('.$nb2.')</p>';
+    }
 
     ?>
 </body>
