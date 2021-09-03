@@ -16,25 +16,16 @@ $pages = [
 
 ];
 
-if (isset($_GET['idpage'])) {
+if(isset($_GET['idpage'])){
 
-    switch ($_GET['idpage']) {
-        case "1":
-            $title = $pages[1]["titre"];
-            $texte = $pages[1]["texte"];
-            break;
-        case "2":
-            $title = $pages[2]["titre"];
-            $texte = $pages[2]["texte"];
-            break;
-        case "3":
-            $title = $pages[3]["titre"];
-            $texte = $pages[3]["texte"];
-            break;
-    } // ... sinon si
+switch($_GET['idpage']){
+    case "1"{
+    $title = $pages[1]["titre"];
+    $texte = $pages[1]["texte"];}
+} // ... sinon si
 
-    // page d'accueil par défaut    
-} else {
+// page d'accueil par défaut    
+}else{
     $title = $pages[1]["titre"];
     $texte = $pages[1]["texte"];
 }
@@ -42,19 +33,16 @@ if (isset($_GET['idpage'])) {
 ?>
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Variables Get et contenu différent</title>
 </head>
-
 <body>
     <h1>Variables Get et contenu différent</h1>
     <nav><a href="?idpage=1">Accueil</a> - <a href="?idpage=2">Contact</a> - <a href="?idpage=3">Achats</a> -</nav>
-    <h2><?= $title ?></h2>
-    <p><?= $texte ?></p>
+    <h2><?=$title?></h2>
+    <p><?=$texte?></p>
 </body>
-
 </html>

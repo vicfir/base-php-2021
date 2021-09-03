@@ -23,14 +23,6 @@ if (isset($_GET['idpage'])) {
             $title = $pages[1]["titre"];
             $texte = $pages[1]["texte"];
             break;
-        case "2":
-            $title = $pages[2]["titre"];
-            $texte = $pages[2]["texte"];
-            break;
-        case "3":
-            $title = $pages[3]["titre"];
-            $texte = $pages[3]["texte"];
-            break;
     } // ... sinon si
 
     // page d'accueil par défaut    

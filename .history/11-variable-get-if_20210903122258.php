@@ -27,9 +27,9 @@ if (isset($_GET['idpage'])) {
             $title = $pages[2]["titre"];
             $texte = $pages[2]["texte"];
             break;
-        case "3":
-            $title = $pages[3]["titre"];
-            $texte = $pages[3]["texte"];
+        case "1":
+            $title = $pages[1]["titre"];
+            $texte = $pages[1]["texte"];
             break;
     } // ... sinon si
 
