@@ -80,9 +80,10 @@ define("UNE_CONSTANTE_IMPORTANTE","nadia");
             "<br>"  .
             "coucou";
     $str7 = (string) 52.23;
+    $str8 = (string) true;
     echo $str6;
 
-    var_dump($str1,$str2,$str3,$str4,$str5,$str6,$str7);
+    var_dump($str1,$str2,$str3,$str4,$str5,$str6,$str7,$str8);
     ?>
     </p>
 </body>
