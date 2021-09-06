@@ -16,19 +16,12 @@ $pages = [
 
 ];
 
-if (isset($_GET['idpage'])) {
+if (isset($_GET['idpage']) && ctype_digit($_GET['idpage'])) {
     $id = (int) $_GET['idpage'];
-    $id = count($pages) < $id ? 0 : $id;
-    switch ($id) {
-        case 0:
-            $title = $pages[1]["titre"];
-            $texte = $pages[1]["texte"];
-            break;
-        case $id:
-            $title = $pages[$id]["titre"];
-            $texte = $pages[$id]["texte"];
-            break;
-    }
+    $id = count($pages) < $id ||  $id >= 0 ? 1 : $id;
+
+    $title = $pages[$id]["titre"];
+    $texte = $pages[$id]["texte"];
 } else {
     $title = $pages[1]["titre"];
     $texte = $pages[1]["texte"];
