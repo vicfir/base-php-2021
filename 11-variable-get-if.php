@@ -1,4 +1,5 @@
 <?php
+
 // variable de contenu
 $pages = [
     1 => [
@@ -19,12 +20,32 @@ $pages = [
 // si il existe la variable get idpage
 if(isset($_GET['idpage'])){
 
-if($_GET['idpage']==1){
-    $title = $pages[1]["titre"];
-    $texte = $pages[1]["texte"];
-} // ... sinon si
+    if($_GET['idpage']==1){
+        $title = $pages[1]["titre"];
+        $texte = $pages[1]["texte"];
+    } // ... sinon si
 
 // EXERCICE ICI (si le chiffre n'existe pas, on affiche l'accueil)
+
+    // page 2
+    elseif($_GET['idpage']==2){
+        $title = $pages[2]["titre"];
+        $texte = $pages[2]["texte"];
+    }
+
+    // page 3
+    elseif($_GET['idpage']==3){
+        $title = $pages[3]["titre"];
+        $texte = $pages[3]["texte"];
+    }
+
+    // n'importe quel autre chiffre ou chaîne: on affiche l'accueil
+    else{
+        $title = $pages[1]["titre"];
+        $texte = $pages[1]["texte"].'<br><h3>Mauvaise URL pour la variable $_GET[\'idpage\'] = '.$_GET['idpage']."</h3>";
+    }
+
+
 
 // page d'accueil par défaut    
 }else{
@@ -43,6 +64,10 @@ if($_GET['idpage']==1){
 </head>
 <body>
     <h1>Variables Get et contenu différent</h1>
+    <p>La variable $_GET existe toujours par défaut, c'est un tableau vide</p>
+    <p>Les clefs sont les variables d'url et les contenus suivent toujours le signe = et sont au format texte (string) </p>
+    <p><a href="http://base-php-2021:8080/11-variable-get-if.php?var1=5&var2=coucou&var3=true">exemple</a></p>
+<?php var_dump($_GET) ?>
     <nav><a href="?idpage=1">Accueil</a> - <a href="?idpage=2">Contact</a> - <a href="?idpage=3">Achats</a> -</nav>
     <h2><?=$title?></h2>
     <p><?=$texte?></p>
