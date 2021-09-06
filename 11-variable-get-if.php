@@ -16,12 +16,15 @@ $pages = [
 
 ];
 
+// si il existe la variable get idpage
 if(isset($_GET['idpage'])){
 
 if($_GET['idpage']==1){
     $title = $pages[1]["titre"];
     $texte = $pages[1]["texte"];
 } // ... sinon si
+
+// EXERCICE ICI (si le chiffre n'existe pas, on affiche l'accueil)
 
 // page d'accueil par défaut    
 }else{
