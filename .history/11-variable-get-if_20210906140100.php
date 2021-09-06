@@ -31,10 +31,10 @@ if (isset($_GET['idpage'])) {
             $title = $pages[3]["titre"];
             $texte = $pages[3]["texte"];
             break;
-        case isset($_GET):
+            /* case isset($_GET):
             $title = $pages[1]["titre"];
             $texte = $pages[1]["texte"];
-            break;
+            break; */
     } // ... sinon si
 
     // page d'accueil par défaut    
