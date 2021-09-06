@@ -18,8 +18,8 @@ $pages = [
 
 if (isset($_GET['idpage'])) {
     $id = (int) $_GET['idpage'];
-    $id = count($pages) < $id ? 0 : $id;
-    switch ($id) {
+    $id = isset($page[$id] ? $id:0;
+    switch ($_GET['idpage']) {
         case 0:
             $title = $pages[1]["titre"];
             $texte = $pages[1]["texte"];
@@ -28,7 +28,9 @@ if (isset($_GET['idpage'])) {
             $title = $pages[$id]["titre"];
             $texte = $pages[$id]["texte"];
             break;
-    }
+    } // ... sinon si
+
+    // page d'accueil par défaut    
 } else {
     $title = $pages[1]["titre"];
     $texte = $pages[1]["texte"];
@@ -46,6 +48,7 @@ if (isset($_GET['idpage'])) {
 </head>
 
 <body>
+    <?php var_dump()); ?>
     <h1>Variables Get et contenu différent</h1>
     <nav><a href="?idpage=1">Accueil</a> - <a href="?idpage=2">Contact</a> - <a href="?idpage=3">Achats</a> -</nav>
     <h2><?= $title ?></h2>

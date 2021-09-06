@@ -28,6 +28,9 @@ if (isset($_GET['idpage'])) {
             $title = $pages[$id]["titre"];
             $texte = $pages[$id]["texte"];
             break;
+        default:
+            $title = $pages[1]["titre"];
+            $texte = $pages[1]["texte"];
     }
 } else {
     $title = $pages[1]["titre"];

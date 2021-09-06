@@ -18,7 +18,9 @@ $pages = [
 
 if (isset($_GET['idpage'])) {
     $id = (int) $_GET['idpage'];
-    $id = count($pages) < $id ? 0 : $id;
+    if ($page[$id] === undefined) {
+        $id = 0;
+    }
     switch ($id) {
         case 0:
             $title = $pages[1]["titre"];
@@ -28,10 +30,13 @@ if (isset($_GET['idpage'])) {
             $title = $pages[$id]["titre"];
             $texte = $pages[$id]["texte"];
             break;
-    }
+        default:
+            $title = $pages[1]["titre"];
+            $texte = $pages[1]["texte"];
+    } // ... sinon si
+
+    // page d'accueil par défaut    
 } else {
-    $title = $pages[1]["titre"];
-    $texte = $pages[1]["texte"];
 }
 
 ?>
