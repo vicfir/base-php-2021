@@ -19,13 +19,13 @@ $pages = [
 if (isset($_GET['idpage'])) {
     $id = (int) $_GET['idpage'];
     switch ($_GET['idpage']) {
-        case 0:
-            $title = $pages[1]["titre"];
-            $texte = $pages[1]["texte"];
-            break;
         case $id:
             $title = $pages[$id]["titre"];
             $texte = $pages[$id]["texte"];
+            break;
+        case "0":
+            $title = $pages[1]["titre"];
+            $texte = $pages[1]["texte"];
             break;
         case isset($_GET):
             $title = $pages[1]["titre"];
