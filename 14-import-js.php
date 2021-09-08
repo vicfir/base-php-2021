@@ -1,7 +1,9 @@
 <?php
 
+// Importation du contenu d'un fichier externe au format json
 $takeMeteo = file_get_contents("https://prevision-meteo.ch/services/json/bruxelles-1",);
 
+// Transformation du format json en tableau associatif
 $jsonMeteo = json_decode($takeMeteo,true);
 
 // var_dump($jsonMeteo);
