@@ -6,7 +6,7 @@ $jsonMeteo = array_filter(json_decode($takeMeteo, true), function ($key) {
     return strpos($key, 'fcst_day_') === 0;
 }, ARRAY_FILTER_USE_KEY);
 
-//var_dump($jsonMeteo);
+var_dump($jsonMeteo);
 
 ?>
 
