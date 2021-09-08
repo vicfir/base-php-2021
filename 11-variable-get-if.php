@@ -1,48 +1,28 @@
 <?php
-// variable de contenu
-$pages = [
-    1 => [
-        "titre" => "Page d'accueil",
-        "texte" => "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quis incidunt voluptas, rerum, veniam soluta aliquam qui quae quia sunt laudantium excepturi exercitationem esse recusandae nisi unde! Nam placeat nostrum mollitia.",
-    ],
-    2 => [
-        "titre" => "Contact",
-        "texte" => "Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem, dignissimos ullam, voluptates, molestiae laboriosam quidem culpa ab deleniti ea eum eius? Natus ab saepe tempore non sequi unde amet eveniet!",
-    ],
-    3 => [
-        "titre" => "Achats",
-        "texte" => "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ipsum quo blanditiis, pariatur optio sapiente iure aliquid cumque minima at laudantium nulla quisquam quas doloremque culpa odio soluta enim provident eum.",
-    ],
 
-];
+$takeMeteo = file_get_contents("https://prevision-meteo.ch/services/json/bruxelles-1",);
 
-if (isset($_GET['idpage']) && ctype_digit($_GET['idpage'])) {
-    $id = (int) $_GET['idpage'];
-    $id = count($pages) < $id ||  $id >= 0 ? 1 : $id;
+$jsonMeteo = json_decode($takeMeteo,true);
 
-    $title = $pages[$id]["titre"];
-    $texte = $pages[$id]["texte"];
-} else {
-    $title = $pages[1]["titre"];
-    $texte = $pages[1]["texte"];
-}
+// var_dump($jsonMeteo);
+
 
 ?>
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Variables Get et contenu différent</title>
+    <title>Météo</title>
 </head>
-
 <body>
-    <h1>Variables Get et contenu différent</h1>
-    <nav><a href="?idpage=1">Accueil</a> - <a href="?idpage=2">Contact</a> - <a href="?idpage=3">Achats</a> -</nav>
-    <h2><?= $title ?></h2>
-    <p><?= $texte ?></p>
+    <h1>Météo à Bruxelles</h1>
+    <h3>Exercice</h3>
+    <p>Utilisez un foreach pour lister tout le tableau</p>
+    <p>Utilisez un switch si les clefs sont "fcst_day_0" jusqu'à "fcst_day_4"</p>
+    <p>affichez la "date", le "tmin" et "tmax"</p>
+    <p>Exemple le 07.09.2021 il fera entre 16° et 31°</p>
+    
 </body>
-
 </html>
