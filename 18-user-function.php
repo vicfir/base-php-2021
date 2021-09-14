@@ -33,6 +33,23 @@
 
     echo myDate();
 
+
+    ?>
+    <pre>
+        // argument obligatoire
+        function myFirstFunctionWithArg($arg1){}
+    </pre>
+    <?php
+    // un argument sans valeurs par défaut est obligatoire
+    function myFirstFunctionWithArg($arg1){
+        // le retour se fait avec return, il est fondamental pour une fonction
+        return $arg1;
+    }
+
+    // erreur car une valeur doit être passée => echo myFirstFunctionWithArg();
+
+    echo myFirstFunctionWithArg("coucou les amis");
+    echo myFirstFunctionWithArg(173);
     ?>
 </body>
 </html>
