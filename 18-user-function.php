@@ -57,7 +57,7 @@
 
     ?>
     <pre>
-        // arguments obligatoires
+        // arguments obligatoires, ordonés de gauche à droite
         function myFunctionWithArgs($arg1,$arg2,$arg3){}
     </pre>
     <?php
@@ -66,7 +66,118 @@
         }
 
        // erreur car aucun argument => $calcul = myFunctionWithArgs();
+       // erreur car le nombre d'argument n'est pas suffisant => $calcul = myFunctionWithArgs(25,33);
+       $calcul = myFunctionWithArgs(25,33,"coucou");
+       echo $calcul;
+       echo"<hr>";
+       // on peut mettre plus d'arguments, ils seront ignorés (mauvaise pratique)
+       $calcul = myFunctionWithArgs(25,33,"coucou",9,"lala");
+       echo $calcul;
+    ?>
+    <pre>
+        // arguments obligatoires et facultatifs, ordonés de gauche à droite, toujours les obligatoires à gauche des facultatifs
+        function myFunctionWithArgs($arg1,$arg2,$arg3="+"){}
+    </pre>
+    <?php
+        function myFunctionWithArgsFac($arg1,$arg2,$arg3="+"){
+            return $arg1.$arg2.$arg3;
+        }
 
+        echo myFunctionWithArgsFac("lala",25);
+        echo "<hr>";
+        echo myFunctionWithArgsFac("lala",25,"-");
+    ?>
+    <pre>
+        // arguments obligatoires et facultatifs, ordonés de gauche à droite, toujours les obligatoires à gauche des facultatifs, Attention si on veut modifier le dernier facultatif, on doit remplir les facultatifs qui précèdent !
+        function exemple($arg1,$arg2,$arg3="+",$arg4=true){}
+    </pre>
+    <?php
+    function exemple($arg1,$arg2,$arg3="+",$arg4=true){
+        return $arg1.$arg2.$arg3.gettype($arg4).(string) $arg4;
+    }
+
+    echo exemple(5,25);
+    echo "<hr>Pour modifier l' argument 4, on doit réécrire l'argument 3, pour éviter la confusion<hr>";
+    echo exemple(33.22,17,"false");// faux
+    echo " - faux <hr>";
+    echo exemple(33.22,17,"+",false);// ok
+    ?>
+    <h3>Quand on ne connait pas le nombre d'argument</h3>
+    <p>On peut utiliser comme en javascript le tableau d'argument</p>
+    <pre>function addition(...$nombres){
+        $out = 0;
+        foreach($nombres as $value){
+            $value = (float) $value; // devient 0 si non numérique
+            $out += $value; // ajout à sa propre valeur
+        }
+        return $out;
+    }</pre>
+    <?php
+    function addition(...$nombres){
+        $out = 0;
+        foreach($nombres as $value){
+            $value = (float) $value;
+            $out += $value;
+        }
+        return $out;
+    }
+
+    echo addition();
+    echo "<hr>";
+    echo addition(7.35);
+    echo "<hr>";
+    echo addition(7.35,"lulu",3,"lala",5.65);
+    echo "<hr>";
+    echo addition(7.35,19,42,-190,5.65,583);
+    echo "<hr>";
+    ?>
+    <hr>
+    <?php
+    /**
+     * Addition
+     * @param bool : $calcul = true -> display calculation and result, false -> display result
+     * @return float|string
+    */
+    function addition2($calcul, ...$nombres){
+        $nb = 0;
+        $out = "";
+        foreach($nombres as $value){
+            $value = (float) $value;
+
+            // si on veut afficher le calcul ($calcul === true)
+            if($calcul){
+                // concaténation de valeur avec .= 
+                $out .= "$value+";
+            }
+            
+            $nb += $value;
+        }
+        // si la variable de type string est vide
+        if(empty($out)){
+            // retour du float et arrêt du script
+            return "=$nb"; // float
+        }
+        // Sinon (else non nécessaire grâce au return dans le if qui précède)
+        $out = substr($out,0,-1); // substr permet de couper des chaînes de caractères, ici on prend tout depuis le début (0) et on retir 1 caractère à la fin (-1)
+        return $out."=$nb"; // string
+    }
+
+    echo addition2(false);
+    echo "<hr>";
+    echo addition2(false,7.35);
+    echo "<hr>";
+    echo addition2(false,7.35,"lulu",3,"lala",5.65);
+    echo "<hr>";
+    echo addition2(false,7.35,19,42,-190,5.65,583);
+    echo "<hr>";
+    echo addition2(true);
+    echo "<hr>";
+    echo addition2(true,7.35);
+    echo "<hr>";
+    echo addition2(true,7.35,"lulu",3,"lala",5.65);
+    echo "<hr>";
+    echo addition2(true,7.35,19,42,-190,5.65,583);
+    echo "<hr>";
     ?>
 </body>
 </html>
