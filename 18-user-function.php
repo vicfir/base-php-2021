@@ -28,7 +28,10 @@
         $sortie = "<p>";
         $sortie .= date("Y-m-d");
         $sortie .= "</p>";
+        // le return permet de renvoyer un résultat, ! il arrête la fonction en cours (exit ou die)
         return $sortie;
+        // cette ligne ne sera jamais affichée à cause du return
+        echo "lulu";
     }
 
     echo myDate();
@@ -50,6 +53,20 @@
 
     echo myFirstFunctionWithArg("coucou les amis");
     echo myFirstFunctionWithArg(173);
+
+
+    ?>
+    <pre>
+        // arguments obligatoires
+        function myFunctionWithArgs($arg1,$arg2,$arg3){}
+    </pre>
+    <?php
+        function myFunctionWithArgs($arg1,$arg2,$arg3){
+            return $arg1.$arg2.$arg3;
+        }
+
+       // erreur car aucun argument => $calcul = myFunctionWithArgs();
+
     ?>
 </body>
 </html>
