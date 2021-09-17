@@ -1,0 +1,178 @@
+body {
+    margin:0;       /* enlever les marges par défaut du navigateur */
+}
+
+/* =================== MENU ========================*/
+
+nav {
+    position: sticky;   /* pour coller le menu quand la page défile (scroll) */
+    top: 0px;
+    background-color: lightgrey;
+}
+
+nav ul {
+    list-style: none;
+    width:640px;
+    margin: 0 auto;     /* centrer horizontalement */
+}
+
+nav ul li {
+    display:inline-block;
+}
+
+nav ul li a {
+    display:block;
+    text-decoration: none;
+    color: black;
+    font-size: 1.2em;
+    padding: 10px 30px;
+
+    transition: all 1s linear 0s;   /* propriété durée vitesse délai */
+}
+
+nav ul li a:hover {
+    background-color: darkgrey;
+}
+
+/* ===================== ENTETE ====================== */
+
+header {
+    background-image: url("images/banniere.jpg");
+    background-repeat: no-repeat;
+    width: 1024px;
+    height: 256px;
+    margin: 0 auto;
+}
+
+header h1 {
+    position: relative;
+    top:120px;
+    z-index: 5;
+    color: red;
+    text-align: center;
+    background-color: white;
+    width:300px;
+    margin: 0 auto;
+}
+
+/* ================ ZONE PRINCIPALE ================== */
+
+main {
+    width: 1024px;
+    margin: 0 auto;
+}
+
+.bouton {
+    text-align: center;
+}
+
+.bouton a {
+    display: block;
+    width: 400px;
+    height: 64px;
+    line-height: 64px;      /* centrer le texte du lien verticalement */
+    margin: 40px auto;
+    text-decoration: none;
+    color: #000000;
+    background-image: url("images/fermee.png");
+    background-repeat: no-repeat;
+    font-size: 1.2em;
+    border: 1px solid #000000;
+    border-radius: 0 10px 10px 0;
+    box-shadow: 5px 5px 15px 5px #4F4F4F;
+}
+
+.bouton a:hover {
+    background-image: url("images/ouverte.png");
+    box-shadow: none;
+}
+
+.no-msg h2, .msgs h2, .no-msg p {
+    text-align: center;
+}
+
+article {
+    border: 1px solid darkgrey;
+    border-radius: 0 10px 10px 0;
+    box-shadow: 5px 5px 15px 5px #4F4F4F;
+    margin-bottom: 40px;
+    padding: 10px;
+}
+
+article div {
+    text-align: justify;
+}
+
+article p {
+    text-align: right;
+}
+
+/* ================= FORMULAIRE ==================== */
+
+form {
+    width: 640px;
+    margin: 20px auto;
+}
+
+.nom, .email, .message, .envoi {
+    margin: 20px;
+}
+label {
+    display: inline-block;
+    width:100px;
+    height:2em;
+    line-height:2em;
+    font-size:1.2em;
+}
+
+.nom input, .email input, .message textarea {
+    display: inline-block;
+    width:480px;
+}
+
+.message label {
+    float: left;
+}
+
+.message textarea {
+    height: 80px;
+    resize: none;
+}
+
+.envoi input {
+    display: block;
+    width:590px;
+    height: 3em;
+    font-size: 1.2em;
+}
+
+/* ================= GESTION - TABLEAU =============== */
+.admin, .admin tr, .admin th, .admin td {
+    border: 2px solid #000000;
+    border-collapse: collapse;
+}
+
+.admin {
+    margin: 30px auto;
+}
+
+.admin th {
+    height: 2em;
+}
+
+.admin td {
+    padding:10px;
+}
+
+/* ================== FOOTER ========================= */
+footer {
+    width: 1024px;
+    margin: 0 auto;
+    height: 3em;
+    border-top: 2px solid  black;
+}
+
+footer p {
+    text-align: center;
+    font-size: 1.2em;
+}
