@@ -20,10 +20,12 @@ function calcul($num1, $num2, $opertor="+" ){
 
             break;
         case "/";
-
+            // condition pour empêcher la division par 0 avec affichage d'erreur personalisée
         break;
         default: 
-
+            // redirection si chipotage de formulaire
+            header("Location: https://www.facebook.com/LeSoWhat/");
+            exit();
     }
 
     return $out;

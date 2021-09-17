@@ -1,6 +1,18 @@
 <?php
 // importation du fichier de fonctions
 require('19-functions.php');
+
+// si on a envoyé le formulaire
+if(isset($_POST['first_number'],$_POST['second_number'],$_POST['opera'])){
+    // traitement des variables
+    $nb1 = (float) $_POST['first_number'];
+    $nb2 = (float) $_POST['second_number'];
+    // protection paranoïaque inutile pour une calculatrice ;-)
+    $ope = htmlspecialchars(strip_tags(trim($_POST['opera'])),ENT_QUOTES);
+
+    $resultat = calcul($nb1,$nb2,$ope);
+}
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -23,5 +35,8 @@ require('19-functions.php');
         </select>
         <input type="submit" value="="/>
     </form>
+    <?php
+    if(isset($resultat)) echo "<h3>$resultat</h3>";
+    ?>
 </body>
 </html>
