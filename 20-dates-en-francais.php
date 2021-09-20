@@ -14,7 +14,7 @@
  * Si le paramètre vaut 3, le résultat de 
  * 2019-07-15 09:11:05 sera ... "Le lundi 15 juillet 2019 à 9 heures" (si <= 1 heure -> pas de s à heure !!!)
  * 
- * @param  datetime $date
+ * @param  String $date
  * @return String
  */
 function frenchDate($date,$format=1){
