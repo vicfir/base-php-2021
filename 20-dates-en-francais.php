@@ -38,9 +38,30 @@ function frenchDate($date,$format=1){
                 .$moisTab[date("n",$date)]." " // mois en français
                 .date("Y à H:i",$date); // année / heures / minutes
     }elseif($format===2){
-
+        $out.="Le "
+               // .$joursTab[date("w",$date)]." " // jour de la semaine en français
+                .date("d",$date)." " // chiffre du jour
+                .$moisTab[date("n",$date)]." " // mois en français
+                .date("Y à H\hi",$date); // antislash pour éviter l'interprétation de h
     }elseif($format===3){
-
+        $out.="Le "
+                .$joursTab[date("w",$date)]." " // jour de la semaine en français
+                .date("d",$date)." " // chiffre du jour
+                .$moisTab[date("n",$date)]." " // mois en français
+                .date("Y à ",$date); // année
+        // vérification pour le "s" de heure (si au dessus "01", récupération de l'heure, toujours unstring)
+        $h = date("H",$date);
+        // avec un comparaison non stricte, par défaut PHP utilise le transtypage, donc "H" qui est un string, par exemple "02" (convertit en int) sera comparé à 2 
+        if($h >= 2) {
+            $out.=$h." heures";
+        }else{
+            $out.=$h." heure";
+        }
+        /* ternaire 1
+        (int)(date("H",$date))>1? $out.=date(" à G",$date)." heures" : $out.=date(" à G",$date)." heure";
+        // ternaire 2
+        $out .= (int)date("H",$date)>1 ? date(" à G",$date)." heures" : date(" à G",$date)." heure";
+        */
     }else{
          return "Format de date non reconnue";   
     }
@@ -48,7 +69,7 @@ function frenchDate($date,$format=1){
 }
 
 // date en datetime
-$date1 = "2019-07-15 09:11:05";
+$date1 = "2019-07-15 01:11:05";
 $date2 = "2024-01-07 23:44:17";
 $date3 = "2021-12-10 19:07:17";
 
