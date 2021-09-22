@@ -7,11 +7,10 @@
     </head>
     <body>
         <nav>
-            <ul>
-                <li><a href="index.php">Lire les messages</a></li>
-                <li><a href="ajout.php">Ajouter un message</a></li>
-                <li><a href="gestion.php">Gérer les messages</a></li>
-            </ul>
+            <?php
+            // on importe le fichier contenant le menu
+            include "menu.php";
+            ?>
         </nav>
         <header>
             <h1>Ajouter un message</h1>

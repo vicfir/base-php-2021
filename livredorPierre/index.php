@@ -7,7 +7,10 @@
     </head>
     <body>
         <nav>
-            
+            <?php
+            // on importe le fichier contenant le menu
+            include "menu.php";
+            ?>
         </nav>
         <header>
             <h1>Lire les messages</h1>
