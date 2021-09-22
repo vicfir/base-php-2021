@@ -21,7 +21,7 @@ SET time_zone = "+00:00";
 --
 -- Base de données :  `livredor`
 --
-CREATE DATABASE IF NOT EXISTS `livredor` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci;
+CREATE DATABASE IF NOT EXISTS `livredor` DEFAULT CHARACTER SET utf8mb4 ;
 USE `livredor`;
 
 -- --------------------------------------------------------
@@ -38,7 +38,7 @@ CREATE TABLE IF NOT EXISTS `messages` (
   `msg` varchar(1000) NOT NULL,
   `date_msg` datetime NOT NULL ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
