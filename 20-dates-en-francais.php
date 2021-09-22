@@ -30,7 +30,9 @@ function frenchDate($date,$format=1){
 
     // transformation de la date en Timestamp (secondes depuis le 1/1/1970 )
     $date = strtotime($date);
-    // A transformer en switch
+
+
+    /* A transformer en switch
     if($format===1){
         $out.="Le "
                 .$joursTab[date("w",$date)]." " // jour de la semaine en français
@@ -61,10 +63,54 @@ function frenchDate($date,$format=1){
         (int)(date("H",$date))>1? $out.=date(" à G",$date)." heures" : $out.=date(" à G",$date)." heure";
         // ternaire 2
         $out .= (int)date("H",$date)>1 ? date(" à G",$date)." heures" : date(" à G",$date)." heure";
-        */
+        
     }else{
          return "Format de date non reconnue";   
     }
+    */
+
+    // En switch (vérification d'égalité non stricte "==")
+    switch($format){
+
+        case 1:
+        $out.="Le "
+                .$joursTab[date("w",$date)]." " // jour de la semaine en français
+                .date("d",$date)." " // chiffre du jour
+                .$moisTab[date("n",$date)]." " // mois en français
+                .date("Y à H:i",$date); // année / heures / minutes
+                break;
+
+        case 2:        
+        $out.="Le "
+               // .$joursTab[date("w",$date)]." " // jour de la semaine en français
+                .date("d",$date)." " // chiffre du jour
+                .$moisTab[date("n",$date)]." " // mois en français
+                .date("Y à H\hi",$date); // antislash pour éviter l'interprétation de h
+                break;
+        case 3:
+        $out.="Le "
+                .$joursTab[date("w",$date)]." " // jour de la semaine en français
+                .date("d",$date)." " // chiffre du jour
+                .$moisTab[date("n",$date)]." " // mois en français
+                .date("Y à ",$date); // année
+        // vérification pour le "s" de heure (si au dessus "01", récupération de l'heure, toujours unstring)
+        $h = date("H",$date);
+        // avec un comparaison non stricte, par défaut PHP utilise le transtypage, donc "H" qui est un string, par exemple "02" (convertit en int) sera comparé à 2 
+        if($h >= 2) {
+            $out.=$h." heures";
+        }else{
+            $out.=$h." heure";
+        }
+        break;
+
+        // équivalence du else (si rien n'est vrai)
+        default:
+
+            return "Format de date non reconnue";   
+    }
+
+
+
     return $out;
 }
 
@@ -103,7 +149,7 @@ $date3 = "2021-12-10 19:07:17";
    echo "<hr>";
    echo frenchDate($date3);
    echo "<hr><hr>";
-   echo frenchDate($date1,2);
+   echo frenchDate($date1,"2");
    echo "<hr>";
    echo frenchDate($date2,2);
    echo "<hr>";
