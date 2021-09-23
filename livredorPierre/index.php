@@ -1,3 +1,7 @@
+<?php 
+// chargement du fichier de configuration, le require_once ne permet pas l'erreur (exit immédiat) et surtout ne charge le fichier qu'une seule fois !!! (sinon erreur des constantes redéfinies)
+require_once "config.php";
+?>
 <!DOCTYPE html>
 <html>
     <head>
@@ -8,8 +12,9 @@
     <body>
         <nav>
             <?php
-            // on importe le fichier contenant le menu
+            // on importe le fichier contenant le menu, autant de fois qu'on le souhaite, et permet l'erreur (affichage du reste de la page)
             include "menu.php";
+
             ?>
         </nav>
         <header>
@@ -68,6 +73,13 @@
                 </article>
             </section>
         </main>
+        <nav>
+            <?php
+            // on importe le fichier contenant le menu, autant de fois qu'on le souhaite, et permet l'erreur (affichage du reste de la page)
+            include "menu.php";
+
+            ?>
+        </nav>
         <footer>
             <p>Réalisé par Pierre, dans le cadre de la formation Web Développeur du CF2m</p>
         </footer>
