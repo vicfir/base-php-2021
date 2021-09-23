@@ -117,7 +117,8 @@ if($nbMessage){
         ?>
     </nav>
     <footer>
-        <p>Réalisé par Pierre, dans le cadre de la formation Web Développeur du CF2m</p>
+        <!-- EXE 2 année en 4 chiffres, qui change suivant l'année -->
+        <p>Réalisé par Pierre, dans le cadre de la formation Web Développeur du ©CF2m - 2021 </p>
     </footer>
 </body>
 
