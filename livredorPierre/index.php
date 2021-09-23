@@ -1,4 +1,15 @@
 <?php
+
+/*
+EXE 3 remplacer les conditions strictes par les simplifiées
+Lignes  21
+Lignes  43
+Lignes  88 -> utilisation de empty()
+
+       
+*/
+
+
 // chargement du fichier de configuration, le require_once ne permet pas l'erreur (exit immédiat) et surtout ne charge le fichier qu'une seule fois !!! (sinon erreur des constantes redéfinies)
 require_once "config.php";
 
@@ -29,7 +40,7 @@ $requestDB = mysqli_query($connectDB, $sql) or die("Problème lors de la requêt
 $nbMessage = mysqli_num_rows($requestDB);
 
 // si on a au moins un message (0=> false, 1 ou plus => true)
-if($nbMessage){
+if($nbMessage==true){
     // si on a un message OU plusieurs messages, on va toujours utiliser les mysqli_fetch_all avec le flag: MYSQLI_ASSOC
     $messages = mysqli_fetch_all($requestDB,MYSQLI_ASSOC);
 }
