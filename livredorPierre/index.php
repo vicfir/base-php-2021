@@ -102,6 +102,15 @@ if($nbMessage){
     </main>
     <nav>
         <?php
+
+        /*
+        EXERCICE
+         Si j'ai plus que 4 messages
+            on affiche le menu
+         Sinon
+            on ne l'affiche pas   
+         */
+
         // on importe le fichier contenant le menu, autant de fois qu'on le souhaite, et permet l'erreur (affichage du reste de la page)
         include "menu.php";
 
