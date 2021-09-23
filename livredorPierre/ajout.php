@@ -1,3 +1,7 @@
+<?php 
+// chargement du fichier de configuration, le require_once ne permet pas l'erreur (exit immédiat) et surtout ne charge le fichier qu'une seule fois !!! (sinon erreur des constantes redéfinies)
+require_once "config.php";
+?>
 <!DOCTYPE html>
 <html>
     <head>
