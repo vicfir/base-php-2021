@@ -4,7 +4,7 @@
 EXE 3 remplacer les conditions strictes par les simplifiées
 Lignes  21
 Lignes  43
-Lignes  88 -> utilisation de empty()
+Lignes  82 -> utilisation de empty()
 
        
 */
