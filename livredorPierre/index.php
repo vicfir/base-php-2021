@@ -1,8 +1,14 @@
 <?php
 
+/*
+Chargement des dépendances
+*/
 
 // chargement du fichier de configuration, le require_once ne permet pas l'erreur (exit immédiat) et surtout ne charge le fichier qu'une seule fois !!! (sinon erreur des constantes redéfinies)
 require_once "config.php";
+
+// chargement de nos fonctions (pas de bug si rechargement, sauf ralentissement léger, fichier important donc utilisation du require)
+require "functions.php";
 
 // connexion en mysqli procédural au serveur et à la DB en utilisant les constantes se trouvant dans config.php. le @ devant mysqli_connect() empèche l'affichage disgracieuse de l'erreur système, nous allons nous-même écrire l'erreur si il y en a une
 $connectDB = @mysqli_connect(DB_HOST, DB_USER, DB_PWD, DB_NAME, DB_PORT);
@@ -92,8 +98,8 @@ if($nbMessage){
                 <h3><?=$item['pseudo']?></h3>
                 <!-- div avec le contenu du message -->
                 <div><?=$item['msg']?></div>
-                <!-- date et heure de création du message -->
-                <p>Ecrit le <?=$item['date_msg']?></p>
+                <!-- date et heure de création du message + changement en français -->
+                <p>Ecrit <?=mb_strtolower(frenchDate($item['date_msg']));// le strtolower met les majuscules en minuscule, le mb_strtolower fonctionne avec les langues étrangères (non EN)?></p>
             </article>
             <?php
             endforeach;
