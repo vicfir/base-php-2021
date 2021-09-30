@@ -3,10 +3,11 @@
 require_once "config.php";
 
 // debug post
-var_dump($_POST);
+//var_dump($_POST);
 
 // si le formulaire a été envoyé => si la superglobale $_POST n'est pas vide
 if(!empty($_POST)){
+
     // récupération en variables locales des variables $_POST
 
     // le pseudo
@@ -22,10 +23,46 @@ if(!empty($_POST)){
     $pseudo = htmlspecialchars($pseudo,ENT_QUOTES);
 
     // le mail , on utilise un filtre de variable tout fait (renvoie l'adresse si true, false si false)
-    $mail = filter_var($_POST['mail'],FILTER_VALIDATE_EMAIL);
+    $mail = filter_var($_POST['email'],FILTER_VALIDATE_EMAIL);
 
     // le message
     $message = htmlspecialchars(strip_tags(trim($_POST['msg'])),ENT_QUOTES);
+
+    // si au moins un des champs est vide (ou invalide)
+    if(empty($pseudo)||empty($mail)||empty($message)){
+        $themessage = "Un de vos champs est invalide, veuillez recommencer";
+    // sinon si une des longueurs de champs est dépacée    
+    }elseif(strlen($pseudo)>30 || strlen($mail)> 50 || strlen($message)> 1000){
+        $themessage = "Un de vos champs dépasse la longueur maximale";
+    // on peut insérer l'article    
+    }else{
+        // connexion
+        $connectDB = @mysqli_connect(DB_HOST, DB_USER, DB_PWD, DB_NAME, DB_PORT);
+
+        // erreur de connexion
+        if (!$connectDB) {
+            die("Problème lors de la connexion :" . mysqli_connect_error());
+        }
+
+        // charset de communication entre le serveur PHP et le serveur SQL
+        mysqli_set_charset($connectDB,DB_CHARSET); 
+
+
+        // requêtes SQL
+        $sql = "INSERT INTO messages(pseudo,email,msg,date_msg)
+        VALUES('$pseudo','$mail','$message',NOW());";
+
+        // insertion, le $insert contient true si l'insertion a fonctionnée, false sinon
+        $insert = mysqli_query($connectDB,$sql);
+
+        // insertion ok
+        if($insert){
+            $themessage = "Votre message a bien été inséré dans la DB";
+        }else{
+            $themessage = "Votre message n'a pas été inséré dans la base de donnée ! ".mysqli_error($connectDB);
+        }
+
+    }
 
 
 }
@@ -48,15 +85,17 @@ if(!empty($_POST)){
         <header>
             <h1>Ajouter un message</h1>
         </header>
-        <!-- Pour introduire un nouvel enregistrement dans la table des messages
-        On a besoin d'une requête comme :
-        INSERT INTO messages
-        VALUES(NULL,'mon pseudo','mon email','mon message',NOW());
-        ou bien
-        INSERT INTO messages(pseudo,email,msg,date_msg)
-        VALUES('mon pseudo','mon email','mon message',NOW());
-        -->
+
         <main>
+            <?php
+            if(isset($themessage)):
+            ?>
+
+            <h3 id="themessage"><?=$themessage?></h3>
+
+            <?php
+            endif;
+            ?>
             <form method="POST" action="">
                 <div class="nom">
                 <label for="pseudo">Pseudo</label>
@@ -68,7 +107,7 @@ if(!empty($_POST)){
                 </div>
                 <div class="message">
                 <label for="msg">Message</label>
-                <textarea name="msg" id="msg" placeholder="Entrez ici votre message" required></textarea>
+                <textarea name="msg" id="msg" maxlength="1000" placeholder="Entrez ici votre message" required></textarea>
                 </div>
                 <div class="envoi">
                 <input type="submit" value="Envoyer ce message" />

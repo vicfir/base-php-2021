@@ -146,6 +146,11 @@ label {
     font-size: 1.2em;
 }
 
+#themessage{
+    font-style: italic;
+    color: red;
+}
+
 /* ================= GESTION - TABLEAU =============== */
 .admin, .admin tr, .admin th, .admin td {
     border: 2px solid #000000;
