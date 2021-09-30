@@ -1,14 +1,5 @@
 <?php
 
-/*
-EXE 3 remplacer les conditions strictes par les simplifiées
-Lignes  21
-Lignes  43
-Lignes  82 -> utilisation de empty()
-
-       
-*/
-
 
 // chargement du fichier de configuration, le require_once ne permet pas l'erreur (exit immédiat) et surtout ne charge le fichier qu'une seule fois !!! (sinon erreur des constantes redéfinies)
 require_once "config.php";
@@ -23,7 +14,7 @@ if (!$connectDB) {
     die("Problème lors de la connexion :" . mysqli_connect_error());
 }
 
-// si on est ici, c'est qu'on pu se connecter ! (die())
+// si on est ici, c'est qu'on a pu se connecter ! (le die() n'a pas été enclenché)
 
 // on change le charset de communication entre le serveur sql et le serveur php
 mysqli_set_charset($connectDB,DB_CHARSET);
@@ -41,8 +32,9 @@ $nbMessage = mysqli_num_rows($requestDB);
 
 // si on a au moins un message (0=> false, 1 ou plus => true)
 if($nbMessage){
-    // si on a un message OU plusieurs messages, on va toujours utiliser les mysqli_fetch_all avec le flag: MYSQLI_ASSOC
+    // si on a un message OU plusieurs messages, on va toujours utiliser les mysqli_fetch_all avec le flag: MYSQLI_ASSOC - mysqli_fetch_all crée TOUJOURS un tableau indexé, CONTENANT le type de variables choisis via le flag (constantes MYSQLI_ASSOC)
     $messages = mysqli_fetch_all($requestDB,MYSQLI_ASSOC);
+    // var_dump($messages);
 }
 
 ?>
@@ -114,17 +106,9 @@ if($nbMessage){
     <nav>
         <?php
 
-        /*
-        EXERCICE
-         Si j'ai plus que 4 messages
-            on affiche le menu
-         Sinon
-            on ne l'affiche pas   
-
-         */
-
+        // si on a plus de 4 messages
         if($nbMessage>4){ 
-        // on importe le fichier contenant le menu, autant de fois qu'on le souhaite, et permet l'erreur (affichage du reste de la page)
+        // on importe le fichier contenant le menu en bas de page
             include "menu.php";
         }
 
