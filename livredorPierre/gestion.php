@@ -30,7 +30,7 @@ $nbMessage = mysqli_num_rows($requestDB);
 if($nbMessage){
     // si on a un message OU plusieurs messages, on va toujours utiliser les mysqli_fetch_all avec le flag: MYSQLI_ASSOC - mysqli_fetch_all crée TOUJOURS un tableau indexé, CONTENANT le type de variables choisis via le flag (constantes MYSQLI_ASSOC)
     $messages = mysqli_fetch_all($requestDB,MYSQLI_ASSOC);
-    var_dump($messages);
+    //var_dump($messages);
 }
 
 ?>
@@ -52,18 +52,6 @@ if($nbMessage){
             <h1>Gérer les messages</h1>
         </header>
         <main>
-            <!-- Pour supprimer un message de la liste, on a une requête comme :
-            DELETE FROM messages WHERE id=4;
-            -->
-            <!-- Pour récupérer toutes les données de la table
-            On a besoin d'un requête comme :
-            SELECT * FROM messages ORDER BY date_msg DESC;
-            -->
-            <!-- Pour modifier le texte d'un message sur le 1er enregistrement
-            UPDATE messages
-            SET msg="Nouveau Message corrigé"
-            WHERE id=1;     si on veut modifier le 1er message
-            -->
             <table class="admin">
                 <!-- Rangée avec les titres des colonnes du tableau -->
                 <tr>
@@ -75,14 +63,43 @@ if($nbMessage){
                     <th></th>
                 </tr>
                 <!-- Rangées de contenu -->
+                <?php
+                // si on a au moins un message
+                if($nbMessage):
+                    foreach($messages as $item):
+                ?>
                 <tr>
-                    <td>3</td>
-                    <td>André</td>
-                    <td>andre.palmisano@cf2m.be</td>
-                    <td>Hello les gars !</td>
-                    <td>08-09-2021 11:32:51</td>
+                    <td><?=$item['id']?></td>
+                    <td><?=$item['pseudo']?></td>
+                    <td><?=$item['email']?></td>
+                    <td><?php
+                    /* Procédure permettant de couper le message à 60 caractères et rajoute "..." si il dépasse cette longueur, sinon la chaîne reste identique.
+                        Exercice, créer dans functions.php une fonction qui fait la même chose, en premettant de choisir la longueur de la chaîne: 
+                            function cuteText($text,$length=255): string
+                        N'oubliez pas d'importer "functions.php" dans "gestion.php", et utilisez cette fonction pour modifier $item['msg'] à 60 caractères ci dessous
+                    */
+                    if(strlen($item['msg'])>60){
+                        $msg = substr($item['msg'],0,60). "...";
+                    }else{
+                        $msg = $item['msg'];
+                    }
+                    echo $msg;
+
+                    // echo cuteText($item['msg'],60);
+                    ?></td>
+                    <td><?=$item['date_msg']?></td>
                     <td>Supprimer</td>
                 </tr>
+                <?php
+                    endforeach;
+                else:
+                ?>
+                <tr>
+                    <td colspan=6>Pas encore de message</td>
+                </tr>
+                <?php
+                endif;
+                ?>
                 
             </table>
         </main>
