@@ -71,8 +71,9 @@ require_once "config.php";
                 </tr>
             </table>
         </main>
-        <footer>
-            <p>Réalisé par Pierre, dans le cadre de la formation Web Développeur du CF2m</p>
+        <footer>        
+            <?php include "footer.php" ?>
         </footer>
+
     </body>
 </html>

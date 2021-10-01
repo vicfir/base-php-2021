@@ -115,7 +115,7 @@ if(!empty($_POST)){
             </form>
         </main>
         <footer>
-            <p>Réalisé par Pierre, dans le cadre de la formation Web Développeur du CF2m</p>
+            <?php include "footer.php" ?>
         </footer>
     </body>
 </html>
