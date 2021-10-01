@@ -2,6 +2,9 @@
 // chargement du fichier de configuration, le require_once ne permet pas l'erreur (exit immédiat) et surtout ne charge le fichier qu'une seule fois !!! (sinon erreur des constantes redéfinies)
 require_once "config.php";
 
+// dépendance
+require "functions.php";
+
 // connexion en mysqli
 $connectDB = @mysqli_connect(DB_HOST, DB_USER, DB_PWD, DB_NAME, DB_PORT);
 
@@ -76,16 +79,17 @@ if($nbMessage){
                     /* Procédure permettant de couper le message à 60 caractères et rajoute "..." si il dépasse cette longueur, sinon la chaîne reste identique.
                         Exercice, créer dans functions.php une fonction qui fait la même chose, en premettant de choisir la longueur de la chaîne: 
                             function cuteText($text,$length=255): string
-                        N'oubliez pas d'importer "functions.php" dans "gestion.php", et utilisez cette fonction pour modifier $item['msg'] à 60 caractères ci dessous
+                        N'oubliez pas d'importer "functions.php" dans "gestion.php", et utilisez cette fonction pour modifier $item['msg'] à 60 caractères ci dessous 
                     */
-                    if(strlen($item['msg'])>60){
+                    /*if(strlen($item['msg'])>60){
                         $msg = substr($item['msg'],0,60). "...";
                     }else{
                         $msg = $item['msg'];
                     }
-                    echo $msg;
+                    echo $msg;*/
 
-                    // echo cuteText($item['msg'],60);
+                    echo cuteText($item['msg'],50)."<br>"; // exe
+                    echo cuteTheText($item['msg'],50); // sans couper les mots
                     ?></td>
                     <td><?=$item['date_msg']?></td>
                     <td>Supprimer</td>

@@ -1,5 +1,27 @@
 <?php
 
+
+
+/**
+ * cuteText
+ *
+ * @param  String $text
+ * @param  Int $length
+ * @return String
+ */
+function cuteText(String $text, Int $length=255): String{
+    if(strlen($text)>$length){
+        return substr($text,0,$length). " ...";
+    }else{
+        return $text;
+    }
+}
+
+// coupe sans couper les mots
+function cuteTheText(string $text,int $length=255):string{
+    return strlen($text)>$length?substr($text,0,strrpos(substr($text,0,$length),' '))." ...":$text;
+}
+
 /**
  * frenchDate
  * 
