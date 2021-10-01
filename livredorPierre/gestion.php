@@ -88,11 +88,11 @@ if($nbMessage){
                     }
                     echo $msg;*/
 
-                    echo cuteText($item['msg'],50)."<br>"; // exe
-                    echo cuteTheText($item['msg'],50); // sans couper les mots
+                    echo cuteText($item['msg'],60); // exe
+                    //echo cuteTheText($item['msg'],50); // sans couper les mots
                     ?></td>
                     <td><?=$item['date_msg']?></td>
-                    <td>Supprimer</td>
+                    <td><a href="suppression.php?idmessage=<?=$item['id']?>">Supprimer</a></td>
                 </tr>
                 <?php
                     endforeach;
