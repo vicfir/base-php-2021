@@ -25,8 +25,8 @@ echo "<p>$lulu</p>";
 <p>identique que require, par contre n'est chargé qu'une X, très pratique pour les fichiers de configurations, de fonctions etc...</p>
 <?php
 $lulu = "no";
-require_once "a.php";
-echo $lulu;
+require_once "a.php"; // n'est pas rechargé
+echo $lulu; // reste à no
 ?>
 <p>En cas d'erreur, le script s'arrête avec une erreur grave</p>
 <?php
