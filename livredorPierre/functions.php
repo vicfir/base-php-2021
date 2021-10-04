@@ -19,6 +19,16 @@ function cuteText(String $text, Int $length=255): String{
 
 // coupe sans couper les mots
 function cuteTheText(string $text,int $length=255):string{
+    if(strlen($text)>$length){ //si le texte est plus grand que $length
+        $text = substr($text,0,$length); // couper le text à la valeur donnée dans la fonction
+        $int = strrpos($text,' '); // retourne le dernier espace sur la phrase coupée (int)
+        $text = substr($text,0,$int); //coupe au dernier espace
+        return $text." ..."; //retourne la phrase en concaténant "..."
+    }
+    else{
+        return $text; //retourne le texte initiale
+    }
+    // idem en ternaire
     return strlen($text)>$length?substr($text,0,strrpos(substr($text,0,$length),' '))." ...":$text;
 }
 
