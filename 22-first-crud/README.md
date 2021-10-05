@@ -7,7 +7,7 @@ CRUD signifie Create, Read, Update, Delete
 La DB doit être installée sur MariaDB ou MySQL v5.7 
 
 - Inportez dans PHPMyAdmin d'abord `datas/crud01-structure.sql` (création de la DB et des tables)
-- Inportez dans PHPMyAdmin en ayant sélectionné la DB crud01  `datas/crud01-datas.sql` (importation des données, désactivez la vérification )
+- Inportez dans PHPMyAdmin en ayant sélectionné la DB crud01  `datas/crud01-datas.sql` (importation des données, désactivez la vérification des clefs étrangères , Foreign keys)
 
 ## Structure du site
 #### Dossiers:
