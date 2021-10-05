@@ -5,7 +5,7 @@
 // MariaDB connexion
 define("MDB_HOST","localhost");
 define("MDB_PORT",3307);
-define("MDB_NAME","crud01");
+define("MDB_NAME","crud013");
 define("MDB_USER","root");
 define("MDB_PWD","");
 define("MDB_CHARSET","utf8");
