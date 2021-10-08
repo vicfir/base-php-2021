@@ -8,6 +8,9 @@ Toutes les pages publiques sont appelées par celle-ci (1 entrée = 1 sortie)
 // Chargement des dépendances (si faute erreur fatale, arrêt du script, ne peut être chargé qu'une X)
 require_once("config.php");
 
+// nos fonctions
+require_once("functions.php");
+
 
 
 // Connexion en mysqli à notre base de donnée (désactivation du warning avec le @)
