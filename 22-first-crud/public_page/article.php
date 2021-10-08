@@ -10,6 +10,10 @@
     <title>First CRUD | Article | <!-- ici le titre de l'article --></title>
 </head>
 <body>
+    <?php
+    // menu publique
+    include "menu.php";
+    ?>
     <h1>First CRUD | Article | <!-- ici le titre de l'article --></h1>
 </body>
 </html>

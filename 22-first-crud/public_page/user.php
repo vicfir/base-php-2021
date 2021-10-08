@@ -10,6 +10,10 @@
     <title>First CRUD | User | <!-- ici le login de l'utilisateur --></title>
 </head>
 <body>
+    <?php
+    // menu publique
+    include "menu.php";
+    ?>
     <h1>First CRUD | User | <!-- ici le login de l'utilisateur --></h1>
 </body>
 </html>

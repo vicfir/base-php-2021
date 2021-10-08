@@ -36,6 +36,10 @@ if(empty($nbArticle)){
     <title>First CRUD | Home</title>
 </head>
 <body>
+    <?php
+    // menu publique
+    include "menu.php";
+    ?>
     <h1>First CRUD | Home</h1>
     <?php
     // on a pas encore d'articles
