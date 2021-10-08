@@ -55,7 +55,7 @@ if(empty($nbArticle)){
     <hr>
     <h4><?=$item['thearticletitle']?></h4>
     <p><?=$item['thearticletext']?> <a href="?page=article&id=<?=$item['idthearticle']?>">Lire la suite</a></p>
-    <h5>Ecrit par <?=$item['theuserlogin']?> le <?=$item['thearticledate']?></h5>
+    <h5>Ecrit par <a href="?page=user&id=<?=$item['idtheuser']?>"><?=$item['theuserlogin']?></a> le <?=$item['thearticledate']?></h5>
     <?php
         endforeach;
     endif;
