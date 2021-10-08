@@ -18,3 +18,11 @@ if(!$db){ // ($db==false)
     // arrêt du script, et affichage du message d'erreur personnalisé avec mysqli_connect_error() (utf8_encode sert à voir les accents en français)
     die("Erreur de connexion : ".utf8_encode(mysqli_connect_error()));
 }
+
+
+
+
+
+
+// on ferme notre connexion (utile surtout si connexions permanentes activées) - Bonne pratique mais non indispensable
+mysqli_close($db);
