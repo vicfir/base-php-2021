@@ -46,3 +46,14 @@ SELECT a.idthearticle, a.thearticletitle, a.thearticletext, a.thearticledate,
             ON u.idtheuser = a.theuser_idtheuser
 		ORDER BY a.thearticledate DESC
         LIMIT 1;               -- equal to LIMIT 0, 1
+        
+ # Sélection de tous les champs de la table thearticle SAUF theuser_idtheuser classé par thearticledate descendant. Le thearticletext doit être coupé à 250 caractères :
+ # SUBSTR(a.thearticletext,1,250) AS thearticletext. J'utilise le AS pour voir clairement le nom des variables de sorties, SUBSTR(a.thearticletext,1,250) dans un tableau associatif 
+ # est un problème comme nom de variable de sortie. On doit récupérer idtheuser et theuserlogin en jointure interne  depuis  
+# la table theuser - càd l'utilisateur qui a écrit l'article. ! UTILISATION d'alias de table, je ne mets pas le mot clef AS (pratique personnelle) , car je l'utilise pour les alias de sorties
+SELECT a.idthearticle, a.thearticletitle, SUBSTR(a.thearticletext,1,250) AS thearticletext, a.thearticledate,
+				u.idtheuser, u.theuserlogin
+		FROM thearticle a
+			INNER JOIN  theuser u 
+            ON u.idtheuser = a.theuser_idtheuser
+		ORDER BY a.thearticledate DESC;        
