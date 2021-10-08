@@ -29,13 +29,13 @@ function cuteTheText(string $text,int $length=255):string{
  * Permet de transformer une date au format datetime (en français YYYY-MM-JJ HH:MM:SS - en date("Y-m-d H:i/s"))
  * 
  * Si le paramètre est 1, le résultat de 
- * 2019-07-15 09:11:05 sera ... "Le lundi 15 juillet 2019 à 09:11"
+ * 2019-07-15 09:11:05 sera ... "lundi 15 juillet 2019 à 09:11"
  * 
  * Si le paramètre vaut 2, le résultat de 
- * 2019-07-15 09:11:05 sera ... "Le 15 juillet 2019 à 09h11"
+ * 2019-07-15 09:11:05 sera ... "15 juillet 2019 à 09h11"
  * 
  * Si le paramètre vaut 3, le résultat de 
- * 2019-07-15 09:11:05 sera ... "Le lundi 15 juillet 2019 à 9 heures" (si <= 1 heure -> pas de s à heure !!!)
+ * 2019-07-15 09:11:05 sera ... "lundi 15 juillet 2019 à 9 heures" (si <= 1 heure -> pas de s à heure !!!)
  * 
  * @param  String $date
  * @return String
@@ -58,23 +58,19 @@ function frenchDate($date,$format=1){
     switch($format){
 
         case 1:
-        $out.="Le "
-                .$joursTab[date("w",$date)]." " // jour de la semaine en français
+        $out.=  $joursTab[date("w",$date)]." " // jour de la semaine en français
                 .date("d",$date)." " // chiffre du jour
                 .$moisTab[date("n",$date)]." " // mois en français
                 .date("Y à H:i",$date); // année / heures / minutes
                 break;
 
         case 2:        
-        $out.="Le "
-               // .$joursTab[date("w",$date)]." " // jour de la semaine en français
-                .date("d",$date)." " // chiffre du jour
+        $out.=  date("d",$date)." " // chiffre du jour
                 .$moisTab[date("n",$date)]." " // mois en français
                 .date("Y à H\hi",$date); // antislash pour éviter l'interprétation de h
                 break;
         case 3:
-        $out.="Le "
-                .$joursTab[date("w",$date)]." " // jour de la semaine en français
+        $out.=  $joursTab[date("w",$date)]." " // jour de la semaine en français
                 .date("d",$date)." " // chiffre du jour
                 .$moisTab[date("n",$date)]." " // mois en français
                 .date("Y à ",$date); // année
