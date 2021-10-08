@@ -19,10 +19,36 @@ if(!$db){ // ($db==false)
     die("Erreur de connexion : ".utf8_encode(mysqli_connect_error()));
 }
 
+/*
+Création du routeur vers les pages se trouvant dans 'public_page'
+*/
 
+// si il existe une variable GET nommée 'page'
+if(isset($_GET['page'])){
 
+    // si on est dans la white liste (voir PUBLIC_PAGE dans config.php), utilisation de la commande in_array("recherché","array")=> true si dans la liste, false sinon
+    if(in_array($_GET['page'],PUBLIC_PAGE)){
 
+        // appel du fichier souhaité
+        include "public_page/".$_GET['page'].".php";
+    }else{
+        // appel de l'erreur 404 
+        include "public_page/erreur404.php";
+    }
 
+// pas de variable $_GET['page'], nous sommes sur l'accueil    
+}else{
+    // appel de l'accueil 
+    include "public_page/home.php";
+}
+
+/*
+Ces fonctions sont utiles pour les connexions persistantes, ou les requêtes très lourdes en ressources.
+Je les mets à titre informatif
+*/
+
+/* Libération des résultats d'une requête */
+// mysqli_free_result($result);
 
 // on ferme notre connexion (utile surtout si connexions permanentes activées) - Bonne pratique mais non indispensable
 mysqli_close($db);
