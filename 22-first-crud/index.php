@@ -19,6 +19,9 @@ if(!$db){ // ($db==false)
     die("Erreur de connexion : ".utf8_encode(mysqli_connect_error()));
 }
 
+// on indique à notre connexion qu'on va conversé entre PHP et MySQL en UTF-8
+mysqli_set_charset($db,MDB_CHARSET);
+
 /*
 Création du routeur vers les pages se trouvant dans 'public_page'
 */

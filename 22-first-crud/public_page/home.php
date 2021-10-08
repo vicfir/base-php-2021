@@ -14,7 +14,17 @@ $sql="SELECT a.idthearticle, a.thearticletitle, SUBSTR(a.thearticletext,1,250) A
 // on effectue la requête
 $recup = mysqli_query($db,$sql) or die("Erreur lors de la requête :".mysqli_error($db));
 
-//
+// on va vérifier si on au moins un article (on compte le nombre de lignes de résultats)
+$nbArticle = mysqli_num_rows($recup);
+
+// si le résultat est vide ($nbArticle===0)
+if(empty($nbArticle)){
+    $vide = "Il n'y a pas encore d'article sur ce site";
+}else{
+    // conversion dans un format lisible pour PHP, le mysqli_fetch_all nous donne un tableau indexé contenant des tableaux associatifs grâce au flag (constante) MYSQLI_ASSOC
+    $result = mysqli_fetch_all($recup, MYSQLI_ASSOC);
+    // var_dump($result);
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
