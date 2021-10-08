@@ -9,6 +9,7 @@ $sql="SELECT a.idthearticle, a.thearticletitle, SUBSTR(a.thearticletext,1,250) A
     FROM thearticle a
         INNER JOIN  theuser u 
             ON u.idtheuser = a.theuser_idtheuser
+            -- WHERE a.idthearticle=3
     ORDER BY a.thearticledate DESC;";
 
 // on effectue la requête
@@ -36,5 +37,28 @@ if(empty($nbArticle)){
 </head>
 <body>
     <h1>First CRUD | Home</h1>
+    <?php
+    // on a pas encore d'articles
+    if(isset($vide)):
+    ?>
+    <h3>Il n'y a pas encore d'articles sur ce site</h3>
+    <?php
+    // on a au moins un article
+    else:
+        // ternaire qui remplit $nb pour ajouter ou pas le 's'. Si on en a qu'un, pas de 's', sinon, on ajoute un 's'
+        $nb = $nbArticle===1 ? "" : "s";
+    ?>
+    <h3>Il y a <?=$nbArticle?> article<?=$nb?></h3>
+    <?php
+        foreach($result as $item): 
+    ?>
+    <hr>
+    <h4><?=$item['thearticletitle']?></h4>
+    <p><?=$item['thearticletext']?></p>
+    <h5>Ecrit par <?=$item['theuserlogin']?> le <?=$item['thearticledate']?></h5>
+    <?php
+        endforeach;
+    endif;
+    ?>
 </body>
 </html>
