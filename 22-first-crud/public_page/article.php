@@ -2,7 +2,11 @@
 // il doit y exister l'id ET il doit être numérique int positif ET ce n'est pas 0
 if(isset($_GET['id'])&&ctype_digit($_GET['id'])&&!empty($_GET['id'])){
 
-    // ON EST ICI
+    // transtypage de string to int
+    $idarticle = (int) $_GET['id'];
+
+    // requête
+    $sql="";
 
 
 // pas de variable id    
