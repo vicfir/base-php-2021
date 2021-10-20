@@ -13,6 +13,11 @@ INNER JOIN  theuser u
 ON u.idtheuser = a.theuser_idtheuser
 WHERE a.idthearticle = $idarticle ;";
 
+    // exécution de la requête
+    $request = mysqli_query($db,$sql) or die("Erreur de Select : ".mysqli_error($db));
+
+
+
 
 // pas de variable id    
 }else{
