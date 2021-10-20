@@ -16,7 +16,21 @@ WHERE a.idthearticle = $idarticle ;";
     // exécution de la requête
     $request = mysqli_query($db,$sql) or die("Erreur de Select : ".mysqli_error($db));
 
+    // on va vérifier si on trouve 1 article. possibilité 1 ou 0 article
+    if(mysqli_num_rows($request)){ // on a un article (1 == true)
 
+        // on va mettre l'article en tableau associatif pour pouvoir l'afficher facilement en PHP
+        $result = mysqli_fetch_assoc($request);
+
+        var_dump($result);
+
+    }else{ // sinon (0 == false)
+
+        // redirection vers l'erreur 404
+        header("Location: ./?page=erreur404");
+        exit; // on quitte pour éviter la lecture de la suite de la page sur certains serveur
+
+    }
 
 
 // pas de variable id    
