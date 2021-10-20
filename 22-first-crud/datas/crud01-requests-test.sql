@@ -56,4 +56,16 @@ SELECT a.idthearticle, a.thearticletitle, SUBSTR(a.thearticletext,1,250) AS thea
 		FROM thearticle a
 			INNER JOIN  theuser u 
             ON u.idtheuser = a.theuser_idtheuser
-		ORDER BY a.thearticledate DESC;        
+		ORDER BY a.thearticledate DESC;  
+        
+        
+# Sélection de tous les champs de la table thearticle SAUF theuser_idtheuser.       
+# On doit récupérer idtheuser et theuserlogin en jointure interne  depuis  
+# la table theuser - càd l'utilisateur qui a écrit l'article.
+# La condition sera lorsque l'ID de l'article vaut ... (int) par exemple 2   
+SELECT a.idthearticle, a.thearticletitle, a.thearticletext, a.thearticledate,
+				u.idtheuser, u.theuserlogin
+		FROM thearticle a
+			INNER JOIN  theuser u 
+            ON u.idtheuser = a.theuser_idtheuser
+		WHERE a.idthearticle = 2 ;   
