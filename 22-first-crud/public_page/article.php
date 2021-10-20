@@ -22,7 +22,7 @@ WHERE a.idthearticle = $idarticle ;";
         // on va mettre l'article en tableau associatif pour pouvoir l'afficher facilement en PHP
         $result = mysqli_fetch_assoc($request);
 
-        var_dump($result);
+        // var_dump($result);
 
     }else{ // sinon (0 == false)
 
@@ -47,13 +47,15 @@ WHERE a.idthearticle = $idarticle ;";
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>First CRUD | Article | <!-- ici le titre de l'article --></title>
+    <title>First CRUD | Article | <?=$result['thearticletitle']?></title>
 </head>
 <body>
     <?php
     // menu publique
     include "menu.php";
     ?>
-    <h1>First CRUD | Article | <!-- ici le titre de l'article --></h1>
+    <h1>First CRUD | Article | <?=$result['thearticletitle']?></h1>
+    <p><?=nl2br($result['thearticletext']); // nl2br remplace les retours à la ligne par des br?></p>
+    <h5>Ecrit par <a href="?page=user&id=<?=$result['idtheuser']?>"><?=$result['theuserlogin']?></a> le <?=frenchDate($result['thearticledate'])?></h5>
 </body>
 </html>
