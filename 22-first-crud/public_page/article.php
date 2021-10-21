@@ -11,7 +11,7 @@ if(isset($_GET['id'])&&ctype_digit($_GET['id'])&&!empty($_GET['id'])){
 FROM thearticle a
 INNER JOIN  theuser u 
 ON u.idtheuser = a.theuser_idtheuser
-WHERE a.idthearticle = $idarticle ;";
+WHERE a.idthearticle = $idarticle ;";  
 
     // exécution de la requête
     $request = mysqli_query($db,$sql) or die("Erreur de Select : ".mysqli_error($db));
