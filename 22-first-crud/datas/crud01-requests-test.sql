@@ -68,4 +68,21 @@ SELECT a.idthearticle, a.thearticletitle, a.thearticletext, a.thearticledate,
 		FROM thearticle a
 			INNER JOIN  theuser u 
             ON u.idtheuser = a.theuser_idtheuser
-		WHERE a.idthearticle = 2 ;   
+		WHERE a.idthearticle = 2 ;  
+        
+ 
+#  On veut récupérer les utilisateurs et on va prendre les articles, seulement si il y a un lien (jointure interne)  
+# , seulement si il y a des articles pour ces utilisateurs (abscence d'un utilisateur)
+SELECT	u.idtheuser, u.theuserlogin,
+				a.idthearticle, a.thearticletitle, SUBSTR(a.thearticletext,1,250) AS thearticletext, a.thearticledate
+			FROM theuser u
+				INNER JOIN thearticle a
+				ON u.idtheuser = a.theuser_idtheuser; 
+ 
+#  On veut récupérer les utilisateurs et on va prendre les articles, si il y en a (jointure externe)   
+#  Car on veut pouvoir afficher un auteur même si il n'a pas écrit d'article !
+SELECT	u.idtheuser, u.theuserlogin,
+				a.idthearticle, a.thearticletitle, SUBSTR(a.thearticletext,1,250) AS thearticletext, a.thearticledate
+			FROM theuser u
+				LEFT JOIN thearticle a
+				ON u.idtheuser = a.theuser_idtheuser;
