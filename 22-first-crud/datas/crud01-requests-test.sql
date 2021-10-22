@@ -54,7 +54,7 @@ SELECT a.idthearticle, a.thearticletitle, a.thearticletext, a.thearticledate,
 SELECT a.idthearticle, a.thearticletitle, SUBSTR(a.thearticletext,1,250) AS thearticletext, a.thearticledate,
 				u.idtheuser, u.theuserlogin
 		FROM thearticle a
-			INNER JOIN  theuser u 
+			 INNER JOIN  theuser u 
             ON u.idtheuser = a.theuser_idtheuser
 		ORDER BY a.thearticledate DESC;  
         
@@ -79,10 +79,18 @@ SELECT	u.idtheuser, u.theuserlogin,
 				INNER JOIN thearticle a
 				ON u.idtheuser = a.theuser_idtheuser; 
  
-#  On veut récupérer les utilisateurs et on va prendre les articles, si il y en a (jointure externe)   
+#  On veut récupérer les utilisateurs et on va prendre les articles, si il y en a (jointure externe LEFT)   
 #  Car on veut pouvoir afficher un auteur même si il n'a pas écrit d'article !
 SELECT	u.idtheuser, u.theuserlogin,
 				a.idthearticle, a.thearticletitle, SUBSTR(a.thearticletext,1,250) AS thearticletext, a.thearticledate
 			FROM theuser u
 				LEFT JOIN thearticle a
 				ON u.idtheuser = a.theuser_idtheuser;
+                
+#  On veut récupérer les utilisateurs et on va prendre les articles, si il y en a (jointure externe RIGHT)   
+#  Car on veut pouvoir afficher un article même si il n'a pas d'auteur !
+SELECT	u.idtheuser, u.theuserlogin,
+				a.idthearticle, a.thearticletitle, SUBSTR(a.thearticletext,1,250) AS thearticletext, a.thearticledate
+			FROM theuser u
+				RIGHT JOIN thearticle a
+				ON u.idtheuser = a.theuser_idtheuser;                
