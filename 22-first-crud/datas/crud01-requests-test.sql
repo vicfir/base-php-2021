@@ -93,4 +93,28 @@ SELECT	u.idtheuser, u.theuserlogin,
 				a.idthearticle, a.thearticletitle, SUBSTR(a.thearticletext,1,250) AS thearticletext, a.thearticledate
 			FROM theuser u
 				RIGHT JOIN thearticle a
-				ON u.idtheuser = a.theuser_idtheuser;                
+				ON u.idtheuser = a.theuser_idtheuser;  
+                
+# Pour la page user.php, on va sélectionner l'auteur, et tous les articles 
+# qu'il a écrit, si il en a écrit (mais donc pas obligatoire)
+# Mais on a un problème, on a 3 lignes de résultats alors qu'on en souhaiterait
+# qu'une seule, classé par date d'article descendant
+
+SELECT	u.idtheuser, u.theuserlogin,
+		a.idthearticle, a.thearticletitle, SUBSTR(a.thearticletext,1,150) AS thearticletext, a.thearticledate
+			FROM theuser u
+				LEFT JOIN thearticle a
+				ON u.idtheuser = a.theuser_idtheuser
+			WHERE u.idtheuser = 1
+		ORDER BY a.thearticledate DESC;  
+    
+# pour éviter ça, on peut utiliser un GROUP BY , mais on perd les articles
+# séléctionnés ! pour n'en avoir plus qu'un   
+SELECT	u.idtheuser, u.theuserlogin,
+		a.idthearticle, a.thearticletitle, SUBSTR(a.thearticletext,1,150) AS thearticletext, a.thearticledate
+			FROM theuser u
+				LEFT JOIN thearticle a
+				ON u.idtheuser = a.theuser_idtheuser
+			WHERE u.idtheuser = 1
+		GROUP BY u.idtheuser
+		ORDER BY a.thearticledate DESC;         
