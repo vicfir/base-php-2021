@@ -56,5 +56,18 @@ if(isset($_GET['id']) &&
         <?php print_r($result) ?>
     </pre>
     <h1>First CRUD | User | <?= $result['theuserlogin']?></h1>
+    <?php
+    // l'utilisateur n'a pas écrit d'article(s), le champs avec les id d'articles est vide
+    if(empty($result['idthearticle'])):
+    ?>
+    <h3>Il n'y a pas encore d'article(s) écrit par <?= $result['theuserlogin']?></h3>
+    <?php
+    // il y a au moins un article
+    else:
+    ?>
+    hahaha
+    <?php
+    endif;
+    ?>
 </body>
 </html>
