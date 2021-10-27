@@ -60,7 +60,7 @@ if(isset($_GET['id']) &&
     // l'utilisateur n'a pas écrit d'article(s), le champs avec les id d'articles est vide
     if(empty($result['idthearticle'])):
     ?>
-    <h3>Il n'y a pas encore d'article(s) écrit par <?= $result['theuserlogin']?></h3>
+    <h3>Il n'y a pas encore d'article écrit par <?= $result['theuserlogin']?></h3>
     <?php
     // il y a au moins un article
     else:
@@ -71,7 +71,14 @@ if(isset($_GET['id']) &&
         $textArticle = explode("|||",$result['thearticletext']);
         $dateArticle = explode("|||",$result['thearticledate']);
 
+        // on va compter le nombre d'articles dans un tableau avec count (ils on tous le même nombre d'entrée)
+        $nbArticle = count($idArticle);
+
+        // on va utiliser une ternaire pour rajouter le s à "article" si il y en a plus que 1 
+        $nb = ($nbArticle > 1) ? "s" : "";
+
     ?>
+    <h3>Il y a <?=$nbArticle?> article<?=$nb?> écrit par <?= $result['theuserlogin']?></h3>
     <pre>
         <?php print_r($idArticle) ?>
         <?php print_r($titleArticle) ?>
