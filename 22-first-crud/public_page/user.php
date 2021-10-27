@@ -64,8 +64,20 @@ if(isset($_GET['id']) &&
     <?php
     // il y a au moins un article
     else:
+        // on part du principe qu'on peut en avoir plusieurs (une boucle d'une itération reste très rapide à effectuer)
+        // on va utiliser la fonction explode qui permet de couper sune chaîne de caractères sui vant un séparateur
+        $idArticle = explode(",", $result['idthearticle']) ;
+        $titleArticle = explode("|||",$result['thearticletitle']);
+        $textArticle = explode("|||",$result['thearticletext']);
+        $dateArticle = explode("|||",$result['thearticledate']);
+
     ?>
-    hahaha
+    <pre>
+        <?php print_r($idArticle) ?>
+        <?php print_r($titleArticle) ?>
+        <?php print_r($textArticle) ?>
+        <?php print_r($dateArticle) ?>
+    </pre>
     <?php
     endif;
     ?>
